@@ -1,0 +1,30 @@
+.login {
+  .form {
+    max-width: 330px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 20px;
+    margin-top: 30px;
+    border: 2px solid #e0d4d8;
+    .input {
+      margin-bottom: 15px;
+    }
+    .btn {
+      color: #7451f8;
+      border-color: #7451f8;
+    }
+    .error {
+      margin-top: 10px;
+    }
+  }
+  .title {
+    font-size: 50px;
+    font-weight: bold;
+    color: #7451f8;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+}
