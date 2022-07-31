@@ -19,7 +19,7 @@ const CategoriesTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/categories/services" style={{ textDecoration: "none" }}>
+            <Link to="/categories/subCategories" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -36,7 +36,7 @@ const CategoriesTable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List Categories
+        Cách Danh mục
         <Link to="/categories/new" className="link">
           Add New
         </Link>

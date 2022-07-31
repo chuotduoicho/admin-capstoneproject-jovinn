@@ -1,9 +1,11 @@
 import "./widget.scss";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { useState } from "react";
+import { selectTotalUsers,selectTotalServices } from "../../redux/adminSlice";
+import { useSelector } from "react-redux";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import { Link } from "react-router-dom";
 const Widget = ({ type }) => {
   let data;
@@ -11,13 +13,16 @@ const Widget = ({ type }) => {
   //temporary
   const amount = 100;
   const diff = 20;
+  // const totalUser = useSelector(selectTotalUsers);
+  // const totalService = useSelector(selectTotalServices);
 
   switch (type) {
-    case "user":
+    case "users":
       data = {
-        title: "USERS",
+        title: "SỐ NGƯỜI DÙNG",
         isMoney: false,
-        link: "See all users",
+        link: "Xem danh sách người dùng",
+        value: "10",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -29,13 +34,14 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+    case "services":
       data = {
-        title: "ORDERS",
+        title: "DỊCH VỤ",
         isMoney: false,
-        link: "View all orders",
+        link: "Xem danh sách dịch vụ",
+        value: "11",
         icon: (
-          <ShoppingCartOutlinedIcon
+          <HomeRepairServiceIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -45,26 +51,28 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "requests":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "YÊU CẦU",
+        isMoney: false,
+        link: "Xem danh sách yêu cầu",
+        value: "7",
         icon: (
-          <MonetizationOnOutlinedIcon
+          <ReceiptLongIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
           />
         ),
       };
       break;
-    case "balance":
+    case "contracts":
       data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
+        title: "HƠP ĐỒNG",
+        isMoney: false,
+        link: "Xem danh sách hợp đồng",
+        value: "5",
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <AssignmentIcon
             className="icon"
             style={{
               backgroundColor: "rgba(128, 0, 128, 0.2)",
@@ -83,17 +91,17 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && "$"} {data.value}
         </span>
         <Link to={"/" + data.title}>
           <span className="link">{data.link}</span>
         </Link>
       </div>
       <div className="right">
-        <div className="percentage positive">
+        {/* <div className="percentage positive">
           <KeyboardArrowUpIcon />
           {diff} %
-        </div>
+        </div> */}
         {data.icon}
       </div>
     </div>

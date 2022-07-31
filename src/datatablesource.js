@@ -207,6 +207,33 @@ export const categoryRows = [
     numberService: 21,
   },
 ];
+export const subCategoryRows = [
+  {
+    id: 1,
+    categoryName: "A",
+    numberService: 7,
+  },
+  {
+    id: 2,
+    categoryName: "B",
+    numberService: 5,
+  },
+  {
+    id: 3,
+    categoryName: "C",
+    numberService: 0,
+  },
+  {
+    id: 4,
+    categoryName: "D",
+    numberService: 1,
+  },
+  {
+    id: 5,
+    categoryName: "E",
+    numberService: 3,
+  }
+];
 
 export const serviceColumns = [
   { field: "id", headerName: "ID", width: 70 },

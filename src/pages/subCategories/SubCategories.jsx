@@ -1,18 +1,18 @@
-import "./categories.scss";
+import "./subCategories.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import CategoriesTable from "../../components/categoryTable/CategoryTable";
+import SubCategoriesTable from "../../components/subCategoryTable/SubCategoryTable";
 
-const Categories = () => {
+const SubCategories = () => {
   return (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <CategoriesTable />
+        <SubCategoriesTable />
       </div>
     </div>
   );
 };
 
-export default Categories;
+export default SubCategories;

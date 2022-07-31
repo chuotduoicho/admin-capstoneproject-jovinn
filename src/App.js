@@ -13,6 +13,7 @@ import Admins from "./pages/admins/Admins";
 import Orders from "./pages/orders/Orders";
 import Transactions from "./pages/transactions/Transactions";
 import Categories from "./pages/categories/Categories";
+import SubCategories from "./pages/subCategories/SubCategories";
 import Services from "./pages/services/Services";
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
             </Route>
             <Route path="categories">
               <Route index element={<Categories />} />
-              <Route path="services" element={<Services />} />
+              <Route path="subCategories" element={<SubCategories />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Admin" />}

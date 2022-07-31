@@ -91,36 +91,7 @@ const Sidebar = () => {
             <span>Delivery</span>
           </li> */}
 
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <p className="title">EXPLORE</p>
-          <li>
-            <ManageSearchIcon className="icon" />
-            <span>Discover</span>
-          </li>
-          <li>
-            <AutoStoriesIcon className="icon" />
-            <span>Blog</span>
-          </li>
-          {/* <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
-          </li>
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
-          </li> */}
+          
           <p className="title">USER</p>
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>

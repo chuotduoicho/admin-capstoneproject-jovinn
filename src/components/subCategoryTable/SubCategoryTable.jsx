@@ -1,11 +1,11 @@
-import "./adminTable.scss";
+import "./subCategoryTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { categoryColumns, subCategoryRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const AdminTable = () => {
-  const [data, setData] = useState(userRows);
+const SubCategoriesTable = () => {
+  const [data, setData] = useState(subCategoryRows);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -19,7 +19,7 @@ const AdminTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to="/subCategories/detail" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -36,15 +36,15 @@ const AdminTable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Danh sách quản trị viên
-        <Link to="/admins/new" className="link">
-          Thêm mới
+        Các danh mục con
+        <Link to="/categories/new" className="link">
+          Add New
         </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={categoryColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
@@ -53,4 +53,4 @@ const AdminTable = () => {
   );
 };
 
-export default AdminTable;
+export default SubCategoriesTable;

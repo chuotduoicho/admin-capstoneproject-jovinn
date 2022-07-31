@@ -13,17 +13,17 @@ const Home = () => {
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="user" />
-          <Widget type="order" />
-          <Widget type="earning" />
-          <Widget type="balance" />
+          <Widget type="users" />
+          <Widget type="requests" />
+          <Widget type="contracts" />
+          <Widget type="services" />
         </div>
         <div className="charts">
           <Featured />
-          <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
+          <Chart title="Thu nhập trong 6 tháng gần nhất" aspect={2 / 1} />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
+          <div className="listTitle">Các giao dịch gần đây</div>
           <Table />
         </div>
       </div>
