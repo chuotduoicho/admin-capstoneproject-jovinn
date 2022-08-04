@@ -4,17 +4,15 @@ const getTotalUsers = JSON.parse(localStorage.getItem("totalUsers"));
 const getTotalServices = JSON.parse(localStorage.getItem("totalServices"));
 const getTotalRevenue = JSON.parse(localStorage.getItem("totalRevenue"));
 const getRevenueByMonth = JSON.parse(localStorage.getItem("revenueByMonth"));
-const initialState = getTotalUsers&&getTotalRevenue&&getTotalServices
+const initialState = getTotalUsers&&getTotalServices
     ?{
         getTotalUsers : getTotalUsers,
-        getTotalRevenue : getTotalRevenue,
         getTotalServices : getTotalServices,
         status: "idle"
     }
     :{
-        getTotalUsers : [],
-        getTotalRevenue : [],
-        getTotalServices : [],
+        getTotalUsers : {},
+        getTotalServices : {},
         status: "idle"
     };
 
@@ -58,13 +56,19 @@ const adminSlice = createSlice({
     name: "admin",
     initialState,
     extraReducers:{
-
+        [fetchTotalUser.pending]: (state, action) => {
+            state.status = "loading";
+        },
+        [fetchTotalUser.fulfilled]: (state, {payload}) => {
+            state.status = "success";
+        },
+        [fetchTotalUser.rejected]: (state, action) => {
+            state.status = "failed";
+        }
     }
 });
 
 const {reducer} = adminSlice;
 export default reducer;
-export const selectTotalUsers = (state) => state.admin.totalUser;
-export const selectTotalServices = (state) => state.admin.totalService;
-export const selectTotalRevenue = (state) => state.admin.totalRevenue;
-export const selectRevenueByMonth = (state) => state.admin.revenueByMonth;
+export const selectTotalUsers = (state) => state.admin.getTotalUsers;
+export const selectTotalServices = (state) => state.admin.getTotalServices;

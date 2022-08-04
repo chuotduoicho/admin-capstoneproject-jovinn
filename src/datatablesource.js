@@ -123,20 +123,24 @@ export const userRows = [
 ];
 
 export const categoryColumns = [
-  { field: "id", headerName: "ID", width: 70 },
   {
-    field: "categoryName",
+    field: "name",
     headerName: "Category",
     width: 230,
-    renderCell: (params) => {
-      return <div className="cellWithImg">{params.row.categoryName}</div>;
-    },
+    // renderCell: (params) => {
+    //   return <div className="cellWithImg">{params.row.categoryName}</div>;
+    // },
   },
   {
-    field: "numberService",
-    headerName: "Number Service",
-    width: 230,
+    field: "createAt",
+    headerName: "Created At",
+    width: 250,
   },
+  {
+    field: "updatedAt",
+    headerName: "Updated At",
+    width: 250,
+  }
 ];
 
 //temporary data

@@ -1,28 +1,22 @@
 import "./widget.scss";
-import { useState } from "react";
-import { selectTotalUsers,selectTotalServices } from "../../redux/adminSlice";
-import { useSelector } from "react-redux";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import { Link } from "react-router-dom";
-const Widget = ({ type }) => {
-  let data;
 
+const Widget = ({ type, count}) => {
+  let data;
   //temporary
-  const amount = 100;
+  const amount = count;
   const diff = 20;
-  // const totalUser = useSelector(selectTotalUsers);
-  // const totalService = useSelector(selectTotalServices);
 
   switch (type) {
     case "users":
       data = {
         title: "SỐ NGƯỜI DÙNG",
-        isMoney: false,
         link: "Xem danh sách người dùng",
-        value: "10",
+        value: count,
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -37,9 +31,8 @@ const Widget = ({ type }) => {
     case "services":
       data = {
         title: "DỊCH VỤ",
-        isMoney: false,
         link: "Xem danh sách dịch vụ",
-        value: "11",
+        value: count,
         icon: (
           <HomeRepairServiceIcon
             className="icon"
@@ -54,9 +47,8 @@ const Widget = ({ type }) => {
     case "requests":
       data = {
         title: "YÊU CẦU",
-        isMoney: false,
         link: "Xem danh sách yêu cầu",
-        value: "7",
+        value: count,
         icon: (
           <ReceiptLongIcon
             className="icon"
@@ -68,9 +60,8 @@ const Widget = ({ type }) => {
     case "contracts":
       data = {
         title: "HƠP ĐỒNG",
-        isMoney: false,
         link: "Xem danh sách hợp đồng",
-        value: "5",
+        value: count,
         icon: (
           <AssignmentIcon
             className="icon"
@@ -91,7 +82,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {data.value}
+          {data.value}
         </span>
         <Link to={"/" + data.title}>
           <span className="link">{data.link}</span>

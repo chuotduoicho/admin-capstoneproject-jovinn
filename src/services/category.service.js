@@ -7,22 +7,37 @@ const getAllCategories = () => {
     return response.data;
   });
 };
-const categoryService = { getAllCategories };
+
+const addCategory = (category) => {
+  return axios
+    .post(API_URL + "/category", category)
+    .then((response) => {
+      return response.data;
+    });
+}
 
 const getSubCategories = (catId) => {
-    return axios
-        .get(API_URL + "/subCategory/" + catId)
-        .then((response) => {
-            return response.data;
-        });
+  return axios
+    .get(API_URL + "/subCategory/findByCategory/" + catId)
+    .then((response) => {
+      localStorage.setItem("subcategories",JSON.stringify(response.data));
+      return response.data;
+    });
 };
 
-const addSubCategory = (subCategory) =>{
-    return axios
-    .post(API_URL + "/subCategory/", subCategory)
+const addSubCategory = (subCategory) => {
+  return axios
+    .post(API_URL + "/subCategory", subCategory)
     .then((response) => {
-        return response.data;
+      return response.data;
     });
+};
+
+const categoryService = {
+  getAllCategories,
+  addCategory,
+  getSubCategories,
+  addSubCategory
 };
 
 export default categoryService;

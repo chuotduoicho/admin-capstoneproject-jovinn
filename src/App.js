@@ -45,7 +45,7 @@ function App() {
             </Route>
             <Route path="categories">
               <Route index element={<Categories />} />
-              <Route path="subCategories" element={<SubCategories />} />
+              <Route path="subCategories/:categoryId" element={<SubCategories />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Admin" />}

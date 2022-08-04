@@ -1,12 +1,21 @@
 import "./subCategoryTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { categoryColumns, subCategoryRows } from "../../datatablesource";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSubCategories, selectSubcategories } from "../../redux/categorySlice";
+import { useEffect } from "react";
 
 const SubCategoriesTable = () => {
-  const [data, setData] = useState(subCategoryRows);
-
+  const subCategories = useSelector(selectSubcategories)
+  const {categoryId} = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchSubCategories(categoryId));
+  },[]);
+  const [data, setData] = useState(subCategories);
+  console.log("subcats", subCategories);
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
