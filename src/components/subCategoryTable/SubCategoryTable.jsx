@@ -7,15 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchSubCategories, selectSubcategories } from "../../redux/categorySlice";
 import { useEffect } from "react";
 
-const SubCategoriesTable = () => {
-  const subCategories = useSelector(selectSubcategories)
-  const {categoryId} = useParams();
+const SubCategoriesTable = (categoryId) => {
+  const subCategories = useSelector(selectSubcategories);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchSubCategories(categoryId));
   },[]);
+  console.log("subCats",subCategories);
   const [data, setData] = useState(subCategories);
-  console.log("subcats", subCategories);
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
@@ -46,9 +45,9 @@ const SubCategoriesTable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Các danh mục con
-        <Link to="/categories/new" className="link">
+        <a to="/categories/new" className="link">
           Add New
-        </Link>
+        </a>
       </div>
       <DataGrid
         className="datagrid"
