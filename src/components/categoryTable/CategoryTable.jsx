@@ -14,7 +14,6 @@ const CategoriesTable = () => {
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
-  console.log("category",listCategories);
   const [data, setData] = useState(listCategories);
 
   const handleDelete = (id) => {
@@ -29,10 +28,11 @@ const CategoriesTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-              <div 
+            <Link to={"subCategories/" + params.row.id}>
+              <div
                 className="viewButton"
-                onClick={() =>navigate("/categories/subCategories/" + params.row.id)}
               >View</div>
+            </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
