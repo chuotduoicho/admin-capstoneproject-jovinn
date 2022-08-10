@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 const SubCategoriesTable = ({categoryId}) => {
   const subCategories = useSelector(selectSubcategories);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(subCategories);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchSubCategories(categoryId));

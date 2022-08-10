@@ -11,10 +11,12 @@ const CategoriesTable = () => {
   const navigate = useNavigate();
   const listCategories = useSelector(selectAllCategories);
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
   useEffect(() => {
     dispatch(fetchCategories());
+    setData(listCategories);
   }, []);
-  const [data, setData] = useState(listCategories);
+  
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -28,11 +30,11 @@ const CategoriesTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={"subCategories/" + params.row.id}>
+              <a href={"http://localhost:3000/subCategories/"+params.row.id}>
               <div
                 className="viewButton"
               >View</div>
-            </Link>
+              </a>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
