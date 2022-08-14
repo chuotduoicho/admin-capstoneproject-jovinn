@@ -3,8 +3,15 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const [successful, setSuccessful] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  //const { message } = useSelector((state) => state.message);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();

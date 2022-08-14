@@ -48,7 +48,7 @@ const Widget = ({ type, count}) => {
       data = {
         title: "YÊU CẦU",
         link: "Xem danh sách yêu cầu",
-        value: count,
+        value: "18",
         icon: (
           <ReceiptLongIcon
             className="icon"
@@ -61,7 +61,7 @@ const Widget = ({ type, count}) => {
       data = {
         title: "HƠP ĐỒNG",
         link: "Xem danh sách hợp đồng",
-        value: count,
+        value: "13",
         icon: (
           <AssignmentIcon
             className="icon"

@@ -29,7 +29,7 @@ const SubCategoriesTable = ({categoryId}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/subCategories/detail" style={{ textDecoration: "none" }}>
+            <Link to="/skills" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -47,7 +47,7 @@ const SubCategoriesTable = ({categoryId}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Các danh mục con
-        <a to="/categories/new" className="link">
+        <a to="new" className="link">
           Add New
         </a>
       </div>

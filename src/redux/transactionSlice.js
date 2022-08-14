@@ -10,6 +10,7 @@ export const fetchTransactions = createAsyncThunk(
     "transaction/fetchTransactions",
     async () => {
         const data = await transactionService.getAllTransaction();
+        console.log(data);
         return data;
     }
 )

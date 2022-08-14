@@ -21,7 +21,7 @@ const getSubCategories = (catId) => {
   return axios
     .get(API_URL + "/subCategory/findByCategory/" + catId)
     .then((response) => {
-      localStorage.setItem("subCategories", JSON.stringify(response.data));
+      //localStorage.setItem("subCategories", JSON.stringify(response.data));
       return response.data;
     });
 };

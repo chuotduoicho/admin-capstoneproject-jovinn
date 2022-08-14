@@ -4,7 +4,7 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { productInputs, userInputs } from "./formSource";
+import { adminInputs, categoryInputs, productInputs, skillInputs, subCategoryInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -14,6 +14,8 @@ import Orders from "./pages/orders/Orders";
 import Transactions from "./pages/transactions/Transactions";
 import Categories from "./pages/categories/Categories";
 import SubCategories from "./pages/subCategories/SubCategories";
+import Skills from "./pages/skills/Skill";
+import NewSkill from "./pages/newSkill/NewSkill";
 import Services from "./pages/services/Services";
 
 function App() {
@@ -40,7 +42,7 @@ function App() {
               <Route path=":adminId" element={<Single />} />
               <Route
                 path="new"
-                element={<New inputs={productInputs} title="Add New Admin" />}
+                element={<New inputs={adminInputs} title="Thêm mới quản trị viên" />}
               />
             </Route>
             <Route path="categories">
@@ -48,14 +50,22 @@ function App() {
               {/* <Route path="subCategories/:categoryId" element={<SubCategories />} /> */}
               <Route
                 path="new"
-                element={<New inputs={productInputs} title="Add New Admin" />}
+                element={<New inputs={skillInputs} title="Thêm mới kỹ năng" />}
               />
             </Route>
             <Route path="subCategories/:categoryId">
               <Route index element={<SubCategories />} />
               <Route
                 path="new"
-                element={<New inputs={productInputs} title="Add New Admin" />}
+                element={<New inputs={subCategoryInputs} title="Thêm mới danh mục con" />}
+                
+              />
+            </Route>
+            <Route path="skills" >
+            <Route index element={<Skills />} />
+            <Route
+                path="newSkill"
+                element={<NewSkill inputs={productInputs} title="Thêm mới kỹ năng" />}                
               />
             </Route>
             <Route path="orders">

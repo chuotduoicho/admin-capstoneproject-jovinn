@@ -41,7 +41,77 @@ export const userInputs = [
       placeholder: "USA",
     },
   ];
-  
+
+  export const adminInputs = [
+    {
+      id: 1,
+      label: "Username",
+      type: "text",
+      placeholder: "Nhập username",
+    },
+    {
+      id: 2,
+      label: "Email",
+      type: "mail",
+      placeholder: "Nhập email",
+    },
+    {
+      id: 3,
+      label: "Mật khẩu",
+      type: "password",
+    },
+    {
+      id: 4,
+      label: "Xác nhận mật khẩu",
+      type: "password",
+    },
+  ];
+
+  export const categoryInputs = [
+    {
+      id: 1,
+      label: "Tên danh mục",
+      type: "text",
+      placeholder: "Nhập tên danh mục",
+    }
+  ];
+
+  export const subCategoryInputs = [
+    {
+      id: 1,
+      label: "Tên danh mục con",
+      type: "text",
+      placeholder: "Nhập tên danh mục",
+    },
+    {
+      id: 2,
+      label: "Danh mục",
+      type: "text",
+      placeholder: "Lập trình",
+    }
+  ];
+
+  export const skillInputs = [
+    {
+      id: 1,
+      label: "Tên kỹ năng",
+      type: "text",
+      placeholder: "Nhập kỹ năng",
+    },
+    {
+      id: 2,
+      label: "Danh mục con",
+      type: "text",
+      placeholder: "Lập trình Back-end",
+    },
+    {
+      id: 3,
+      label: "Danh mục",
+      type: "text",
+      placeholder: "Lập trình",
+    }
+  ];
+
   export const productInputs = [
     {
       id: 1,

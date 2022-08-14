@@ -2,7 +2,7 @@ export const userColumns = [
   { field: "id", headerName: "ID", width: 70 },
   {
     field: "user",
-    headerName: "User",
+    headerName: "Tên người dùng",
     width: 230,
     renderCell: (params) => {
       return (
@@ -21,12 +21,12 @@ export const userColumns = [
 
   {
     field: "age",
-    headerName: "Age",
+    headerName: "Tuổi",
     width: 100,
   },
   {
     field: "status",
-    headerName: "Status",
+    headerName: "Trạng thái",
     width: 160,
     renderCell: (params) => {
       return (
@@ -42,78 +42,94 @@ export const userColumns = [
 export const userRows = [
   {
     id: 1,
-    username: "Snow",
+    username: "caubengoxnghex",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     status: "active",
-    email: "1snow@gmail.com",
-    age: 35,
-  },
-  {
-    id: 2,
-    username: "Jamie Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "2snow@gmail.com",
-    status: "passive",
-    age: 42,
-  },
-  {
-    id: 3,
-    username: "Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "3snow@gmail.com",
-    status: "pending",
-    age: 45,
-  },
-  {
-    id: 4,
-    username: "Stark",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "4snow@gmail.com",
-    status: "active",
-    age: 16,
-  },
-  {
-    id: 5,
-    username: "Targaryen",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "5snow@gmail.com",
-    status: "passive",
+    email: "caubengoxnghex@yahoo.com",
     age: 22,
   },
   {
-    id: 6,
-    username: "Melisandre",
+    id: 2,
+    username: "gaconbietbay",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "6snow@gmail.com",
+    email: "phunguyen@gmail.com",
     status: "active",
-    age: 15,
+    age: 22,
+  },
+  {
+    id: 3,
+    username: "khongduockhoc",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "duc246@gmail.com",
+    status: "active",
+    age: 21,
+  },
+  {
+    id: 4,
+    username: "kemdanuoclanh",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "kemdanuoclanh@gmail.com",
+    status: "active",
+    age: 20,
+  },
+  {
+    id: 5,
+    username: "wibuchua",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "dung123@gmail.com",
+    status: "active",
+    age: 20,
+  },
+  {
+    id: 6,
+    username: "meomoc",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "duceda246@gmail.com",
+    status: "active",
+    age: 20,
   },
   {
     id: 7,
-    username: "Clifford",
+    username: "tung",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "7snow@gmail.com",
-    status: "passive",
-    age: 44,
+    email: "tung@gmail.com",
+    status: "active",
+    age: 20,
   },
   {
     id: 8,
-    username: "Frances",
+    username: "tai",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "8snow@gmail.com",
+    email: "taivo@gmail.com",
     status: "active",
-    age: 36,
+    age: 22,
   },
   {
     id: 9,
-    username: "Roxie",
+    username: "phuc123",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "snow@gmail.com",
-    status: "pending",
-    age: 65,
+    email: "phuc@gmail.com",
+    status: "active",
+    age: 22,
   },
   {
     id: 10,
+    username: "Roxie",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "snow@gmail.com",
+    status: "active",
+    age: 24,
+  },
+  {
+    id: 11,
+    username: "Roxie",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "snow@gmail.com",
+    status: "active",
+    age: 65,
+  },
+  {
+    id: 12,
     username: "Roxie",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     email: "snow@gmail.com",
@@ -142,6 +158,102 @@ export const categoryColumns = [
     width: 250,
   }
 ];
+
+export const SKillColumns = [
+  {
+    field: "name",
+    headerName: "Skill",
+    width: 230,
+    // renderCell: (params) => {
+    //   return <div className="cellWithImg">{params.row.categoryName}</div>;
+    // },
+  },
+  {
+    field: "createAt",
+    headerName: "Created At",
+    width: 250,
+  },
+  {
+    field: "updatedAt",
+    headerName: "Updated At",
+    width: 250,
+  }
+];
+
+export const skillRows = [
+  {
+    id: 1,
+    name: "HTML",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 2,
+    name: "CSS",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 3,
+    name: "Bootstrap",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 4,
+    name: "Javascript",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 5,
+    name: "PHP",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 6,
+    name: "ASP.Net",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 7,
+    name: "Coding",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 8,
+    name: "My SQL",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 9,
+    name: "SQL Server",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 10,
+    name: "NodeJS",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 11,
+    name: "Angular",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  },
+  {
+    id: 12,
+    name: "Java/Spring boot",
+    createAt: "2022-06-29T02:24:26.058+00:00",
+    updatedAt: "2022-06-29T02:24:26.058+00:00",
+  }
+]
 
 //temporary data
 export const categoryRows = [

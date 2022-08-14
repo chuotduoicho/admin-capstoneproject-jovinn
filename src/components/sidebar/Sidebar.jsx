@@ -47,25 +47,25 @@ const Sidebar = () => {
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Users</span>
+              <span>Người dùng thành viên</span>
             </li>
           </Link>
           <Link to="/admins" style={{ textDecoration: "none" }}>
             <li>
               <SupervisorAccountIcon className="icon" />
-              <span>Admins</span>
+              <span>Quản trị viên</span>
             </li>
           </Link>
           <Link to="/categories" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
-              <span>Categories</span>
+              <span>Danh mục</span>
             </li>
           </Link>
           <Link to="/orders" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="icon" />
-              <span>Orders</span>
+              <span>Đơn đặt hàng</span>
             </li>
           </Link>
           {/* <Link to="/requests" style={{ textDecoration: "none" }}>
@@ -77,7 +77,7 @@ const Sidebar = () => {
           <Link to="/transactions" style={{ textDecoration: "none" }}>
             <li>
               <CurrencyExchangeIcon className="icon" />
-              <span>Transactions</span>
+              <span>Giao dịch</span>
             </li>
           </Link>
           {/* <Link to="/wallet" style={{ textDecoration: "none" }}>
@@ -96,12 +96,12 @@ const Sidebar = () => {
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
-              <span>Profile</span>
+              <span>Hồ sơ người dùng</span>
             </li>
           </Link>
           <li onClick={handleLogout}>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <span>Đăng xuất</span>
           </li>
         </ul>
       </div>
