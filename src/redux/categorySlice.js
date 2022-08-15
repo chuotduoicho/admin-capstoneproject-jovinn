@@ -2,11 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import categoryService from "../services/category.service";
 
 const categories = JSON.parse(localStorage.getItem("categories"));
-//const subcategories = JSON.parse(localStorage.getItem("subCategories"));
+const subcategories = JSON.parse(localStorage.getItem("subCategories"));
 const initialState = {
   getAllCategories: categories ? categories : [],
-  getSubCategories: [],
+  getSubCategories: subcategories ? subcategories : [],
   getSkills: [],
+  subcategoryStatus: "idle",
   status: "idle"
 }
 export const fetchCategories = createAsyncThunk(
@@ -59,14 +60,14 @@ export const categorySlice = createSlice({
       state.status = "failed";
     },
     [fetchSubCategories.pending]: (state, action) => {
-      state.status = "loading";
+      state.subcategoryStatus = "loading";
     },
     [fetchSubCategories.fulfilled]: (state, { payload }) => {
       state.getSubCategories = payload;
-      state.status = "success";
+      state.subcategoryStatus = "success";
     },
     [fetchSubCategories.rejected]: (state, action) => {
-      state.status = "failed";
+      state.subcategoryStatus = "failed";
     },
     [fetchSkills.pending]: (state, action) => {
       state.status = "loading";
@@ -85,4 +86,5 @@ const { reducer } = categorySlice;
 export default reducer;
 export const selectAllCategories = (state) => state.category.getAllCategories;
 export const selectSubcategories = (state) => state.category.getSubCategories;
+export const selectSubcategoryStatus = (state) => state.category.subcategoryStatus;
 export const selectSkills = (state) => state.category.getSkills;

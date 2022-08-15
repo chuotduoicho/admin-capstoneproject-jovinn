@@ -8,13 +8,20 @@ import Table from "../../components/table/Table";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTotalUsers, selectTotalServices, fetchTotalUser, fetchTotalService } from "../../redux/adminSlice";
 import { React, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const { admin } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchTotalUser());
-    dispatch(fetchTotalService());
-  }, []);
+    if (!admin) {
+      navigate("/login");
+    } else {
+      dispatch(fetchTotalUser());
+      dispatch(fetchTotalService());
+    }
+  }, [admin]);
   const totalUser = useSelector(selectTotalUsers);
   const totalService = useSelector(selectTotalServices);
   console.log("users", totalUser);
@@ -25,10 +32,10 @@ const Home = () => {
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="users" count={totalUser.totalUser}/>
+          <Widget type="users" count={totalUser.totalUser} />
           <Widget type="requests" />
           <Widget type="contracts" />
-          <Widget type="services" count={totalService.totalService}/>
+          <Widget type="services" count={totalService.totalService} />
         </div>
         <div className="charts">
           <Featured />

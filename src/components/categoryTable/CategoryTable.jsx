@@ -30,11 +30,11 @@ const CategoriesTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-              <a href={"http://localhost:3000/subCategories/"+params.row.id}>
+              <Link to={"/subCategories/" + params.row.id}>
               <div
                 className="viewButton"
               >View</div>
-              </a>
+              </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}

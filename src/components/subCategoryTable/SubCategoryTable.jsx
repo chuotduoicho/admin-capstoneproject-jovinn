@@ -4,18 +4,25 @@ import { categoryColumns, subCategoryRows } from "../../datatablesource";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSubCategories, selectSubcategories } from "../../redux/categorySlice";
+import { fetchSubCategories, selectSubcategories, selectSubcategoryStatus } from "../../redux/categorySlice";
 import { useEffect } from "react";
 
-const SubCategoriesTable = ({categoryId}) => {
+const SubCategoriesTable = ({ categoryId }) => {
   const subCategories = useSelector(selectSubcategories);
-  const [data, setData] = useState(subCategories);
+  const status = useSelector(selectSubcategoryStatus);
+  const [data, setData] = useState([]);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchSubCategories(categoryId));
-    setData(subCategories);
-  },[]);
-  console.log("subCats",subCategories);
+  }, []);
+  console.log("subCats", categoryId);
+
+  useEffect(() => {
+    if (status == "success") {
+      setData(subCategories);
+    }
+  },[status]);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));

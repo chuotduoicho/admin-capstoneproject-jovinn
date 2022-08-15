@@ -18,8 +18,8 @@ const login = (username, password) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem("admin");
+    //localStorage.removeItem("currentUser");
   };
 
   const authService = {

@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import transactionService from "../services/transaction.service";
-
+const transactions = JSON.parse(localStorage.getItem("transactions"));
 const initialState = {
-    transactions: [],
+    transactions: transactions ? transactions : [],
     status: "idle"
 }
 
