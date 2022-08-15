@@ -1,14 +1,13 @@
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
   {
     field: "user",
-    headerName: "Tên người dùng",
+    headerName: "Người dùng",
     width: 230,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
           <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          {params.row.userName}
         </div>
       );
     },
@@ -18,20 +17,14 @@ export const userColumns = [
     headerName: "Email",
     width: 230,
   },
-
-  {
-    field: "age",
-    headerName: "Tuổi",
-    width: 100,
-  },
   {
     field: "status",
     headerName: "Trạng thái",
     width: 160,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
+        <div className={`cellWithStatus ${params.row.isEnabled}`}>
+          {params.row.isEnabled}
         </div>
       );
     },
@@ -140,6 +133,11 @@ export const userRows = [
 
 export const categoryColumns = [
   {
+    field: "id",
+    headerName: "ID",
+    width: 250,
+  },
+  {
     field: "name",
     headerName: "Category",
     width: 230,
@@ -161,195 +159,23 @@ export const categoryColumns = [
 
 export const SKillColumns = [
   {
-    field: "name",
-    headerName: "Skill",
-    width: 230,
-    // renderCell: (params) => {
-    //   return <div className="cellWithImg">{params.row.categoryName}</div>;
-    // },
-  },
-  {
-    field: "createAt",
-    headerName: "Created At",
+    field: "id",
+    headerName: "ID",
     width: 250,
   },
   {
-    field: "updatedAt",
-    headerName: "Updated At",
+    field: "name",
+    headerName: "Tên kỹ năng",
+    width: 230,
+  },
+  {
+    field: "subCategoryId",
+    headerName: "Mã danh mục con",
     width: 250,
   }
 ];
-
-export const skillRows = [
-  {
-    id: 1,
-    name: "HTML",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 2,
-    name: "CSS",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 3,
-    name: "Bootstrap",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 4,
-    name: "Javascript",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 5,
-    name: "PHP",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 6,
-    name: "ASP.Net",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 7,
-    name: "Coding",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 8,
-    name: "My SQL",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 9,
-    name: "SQL Server",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 10,
-    name: "NodeJS",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 11,
-    name: "Angular",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  },
-  {
-    id: 12,
-    name: "Java/Spring boot",
-    createAt: "2022-06-29T02:24:26.058+00:00",
-    updatedAt: "2022-06-29T02:24:26.058+00:00",
-  }
-]
 
 //temporary data
-export const categoryRows = [
-  {
-    id: 1,
-    categoryName: "A",
-    numberService: 21,
-  },
-  {
-    id: 2,
-    categoryName: "B",
-    numberService: 2,
-  },
-  {
-    id: 3,
-    categoryName: "C",
-    numberService: 11,
-  },
-  {
-    id: 4,
-    categoryName: "D",
-    numberService: 22,
-  },
-  {
-    id: 5,
-    categoryName: "E",
-    numberService: 11,
-  },
-  {
-    id: 6,
-    categoryName: "F",
-    numberService: 21,
-  },
-  {
-    id: 7,
-    categoryName: "G",
-    numberService: 21,
-  },
-  {
-    id: 8,
-    categoryName: "H",
-    numberService: 21,
-  },
-  {
-    id: 9,
-    categoryName: "E",
-    numberService: 21,
-  },
-  {
-    id: 10,
-    categoryName: "Q",
-    numberService: 21,
-  },
-  {
-    id: 11,
-    categoryName: "U",
-    numberService: 21,
-  },
-  {
-    id: 12,
-    categoryName: "I",
-    numberService: 21,
-  },
-  {
-    id: 13,
-    categoryName: "O",
-    numberService: 21,
-  },
-];
-export const subCategoryRows = [
-  {
-    id: 1,
-    categoryName: "A",
-    numberService: 7,
-  },
-  {
-    id: 2,
-    categoryName: "B",
-    numberService: 5,
-  },
-  {
-    id: 3,
-    categoryName: "C",
-    numberService: 0,
-  },
-  {
-    id: 4,
-    categoryName: "D",
-    numberService: 1,
-  },
-  {
-    id: 5,
-    categoryName: "E",
-    numberService: 3,
-  }
-];
 
 export const serviceColumns = [
   { field: "id", headerName: "ID", width: 70 },

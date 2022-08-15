@@ -60,7 +60,7 @@ function App() {
                 
               />
             </Route>
-            <Route path="skills" >
+            <Route path="skills/:subCategoryId" >
             <Route index element={<Skills />} />
             <Route
                 path="newSkill"

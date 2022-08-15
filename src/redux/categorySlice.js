@@ -8,6 +8,7 @@ const initialState = {
   getSubCategories: subcategories ? subcategories : [],
   getSkills: [],
   subcategoryStatus: "idle",
+  skillStatus: "idle",
   status: "idle"
 }
 export const fetchCategories = createAsyncThunk(
@@ -39,11 +40,11 @@ export const fetchSubCategories = createAsyncThunk(
 export const fetchSkills = createAsyncThunk(
   "category/fetchSkills",
   async (subCategoryId) => {
-    const data = await categoryService.getSkill(subCategoryId);
+    const data = await categoryService.getSkills(subCategoryId);
     console.log(data);
     return data;
   }
-)
+);
 
 export const categorySlice = createSlice({
   name: "category",
@@ -70,14 +71,14 @@ export const categorySlice = createSlice({
       state.subcategoryStatus = "failed";
     },
     [fetchSkills.pending]: (state, action) => {
-      state.status = "loading";
+      state.skillStatus = "loading";
     },
     [fetchSkills.fulfilled]: (state, { payload }) => {
       state.getSkills = payload;
-      state.status = "success";
+      state.skillStatus = "success";
     },
     [fetchSkills.rejected]: (state, action) => {
-      state.status = "failed";
+      state.skillStatus = "failed";
     },
   },
 });
@@ -87,4 +88,5 @@ export default reducer;
 export const selectAllCategories = (state) => state.category.getAllCategories;
 export const selectSubcategories = (state) => state.category.getSubCategories;
 export const selectSubcategoryStatus = (state) => state.category.subcategoryStatus;
+export const selectSkillStatus = (state) => state.category.skillStatus;
 export const selectSkills = (state) => state.category.getSkills;

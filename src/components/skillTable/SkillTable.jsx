@@ -4,19 +4,26 @@ import { categoryColumns, SKillColumns, skillRows } from "../../datatablesource"
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCategories, selectAllCategories } from "../../redux/categorySlice";
 import { useEffect } from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText } from "@mui/material";
+import { fetchSkills, selectSkills, selectSkillStatus } from "../../redux/categorySlice";
 
-const SKillTable = () => {
-  // const navigate = useNavigate();
-  // const listCategories = useSelector(selectAllCategories);
-  // const dispatch = useDispatch();
+const SKillTable = ({ subCategoryId }) => {
+  const listSkill = useSelector(selectSkills);
+  const status = useSelector(selectSkillStatus)
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   dispatch(fetchCategories());
-  //   setData(listCategories);
-  // }, []);
+  
+  useEffect(() => {
+    dispatch(fetchSkills(subCategoryId));
+  }, []);
+
+  useEffect(() => {
+    if(status=="success"){
+      setData(listSkill);
+    }
+  },[status]);
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -89,7 +96,7 @@ const SKillTable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={skillRows}
+        rows={data}
         columns={SKillColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}

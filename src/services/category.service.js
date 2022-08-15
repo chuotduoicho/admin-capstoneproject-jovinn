@@ -36,7 +36,7 @@ const addSubCategory = (subCategory) => {
 
 const getSkills = (subCatId) => {
   return axios
-    .get(API_URL + "/skill/meta-data/" + subCatId, { headers: authHeader() })
+    .get(API_URL + "/skill/meta-data-list/" + subCatId, { headers: authHeader() })
     .then((response) => {
       localStorage.setItem("skills", JSON.stringify(response.data));
       return response.data;

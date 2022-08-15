@@ -36,7 +36,7 @@ const SubCategoriesTable = ({ categoryId }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/skills" style={{ textDecoration: "none" }}>
+            <Link to={"/skills/"+params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div

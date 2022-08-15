@@ -60,9 +60,20 @@ const adminSlice = createSlice({
             state.status = "loading";
         },
         [fetchTotalUser.fulfilled]: (state, {payload}) => {
+            state.getTotalUsers = payload;
             state.status = "success";
         },
         [fetchTotalUser.rejected]: (state, action) => {
+            state.status = "failed";
+        },
+        [fetchTotalService.pending]: (state, action) => {
+            state.status = "loading";
+        },
+        [fetchTotalService.fulfilled]: (state, {payload}) => {
+            state.getTotalServices = payload;
+            state.status = "success";
+        },
+        [fetchTotalService.rejected]: (state, action) => {
             state.status = "failed";
         }
     }
