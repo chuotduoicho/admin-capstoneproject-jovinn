@@ -48,7 +48,7 @@ const NewCategory = () => {
                   required
                 />
               </div>
-              <button onClick={handleAdd}>Tạo mới</button>
+              <button onClick={handleAdd()}>Tạo mới</button>
             </div>
           </div>
         </div>

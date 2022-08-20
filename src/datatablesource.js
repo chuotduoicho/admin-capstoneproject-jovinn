@@ -192,13 +192,8 @@ export const categoryColumns = [
 export const transactionColumns = [
   {
     field: "paymentCode",
-    headerName: "ID",
+    headerName: "Mã giao dịch",
     width: 160,
-  },
-  {
-    field: "userId",
-    headerName: "Mã người dùng",
-    width: 230,
   },
   {
     field: "fullName",
@@ -216,12 +211,12 @@ export const transactionColumns = [
     width: 160,
   },
   {
-    field: "method",
+    field: "type",
     headerName: "Phương thức",
     width: 160,
   },
   {
-    field: "description",
+    field: "message",
     headerName: "Ghi chú",
     width: 250,
   }

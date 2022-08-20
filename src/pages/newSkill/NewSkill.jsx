@@ -33,7 +33,7 @@ const NewSkill = ({ inputs, title }) => {
                                 <input type={input.type} placeholder={input.placeholder} />
                             </div>
                         ))}
-                        <button>Send</button>
+                        <button>Tạo mới</button>
                     </form>
                 </div>
             </div>

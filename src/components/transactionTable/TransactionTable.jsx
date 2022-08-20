@@ -2,7 +2,7 @@ import "./transactionTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTransactions, selectAllTransations } from "../../redux/transactionSlice";
+import { exportWithdrawRequest, fetchTransactions, selectAllTransations } from "../../redux/transactionSlice";
 import { Button } from "@mui/material";
 import { transactionColumns } from "../../datatablesource";
 
@@ -21,9 +21,9 @@ const TransactionTable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Các giao dịch
-        <Button className="link">
-          Export withdraw data
-        </Button>
+        <button className="link" onClick={() => dispatch(exportWithdrawRequest())}>
+          Xuất file yêu cầu rút tiền
+        </button>
       </div>
       <DataGrid
         className="datagrid"

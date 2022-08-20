@@ -18,8 +18,8 @@ const Datatable = () => {
     //setData(listUsers);
   },[]);
 
-  const handleBan = (id) => {
-    
+  const handleBan = (id,e) => {
+    e.preventDefault();
     dispatch(banOrUnbanUser(id))
       .wrap()
       .then(() => {
@@ -41,7 +41,7 @@ const Datatable = () => {
             </Link>
             <Button
               className="deleteButton"
-              onClick={() => handleBan(params.row.id)}
+              onClick={(e) => handleBan(params.row.id,e)}
             >
               {params.row.isEnabled?"Cấm":"Bỏ cấm"}
             </Button>

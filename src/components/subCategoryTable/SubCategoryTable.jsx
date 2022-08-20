@@ -1,7 +1,7 @@
 import "./subCategoryTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { categoryColumns, subCategoryRows } from "../../datatablesource";
-import { Link, useParams } from "react-router-dom";
+import { categoryColumns } from "../../datatablesource";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSubCategories, selectSubcategories, selectSubcategoryStatus } from "../../redux/categorySlice";
