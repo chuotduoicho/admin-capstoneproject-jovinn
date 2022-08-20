@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { banOrUnbanUser, fetchAllUsers, selectAllUsers } from "../../redux/userSlice";
+import { Button } from "@mui/material";
 
 const Datatable = () => {
   //const [data, setData] = useState([]);
@@ -17,20 +18,20 @@ const Datatable = () => {
     //setData(listUsers);
   },[]);
 
-  const handleDelete = (id) => {
+  const handleBan = (id) => {
     
     dispatch(banOrUnbanUser(id))
       .wrap()
       .then(() => {
         dispatch(fetchAllUsers());
       });
-      //navigate("/users");
+      navigate("/users");
   };
 
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action",
+      headerName: "",
       width: 200,
       renderCell: (params) => {
         return (
@@ -38,12 +39,12 @@ const Datatable = () => {
             <Link to="/users/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">Xem</div>
             </Link>
-            <button
+            <Button
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleBan(params.row.id)}
             >
-              {params.row.isEnabled?"Dừng":"Bỏ dừng"}
-            </button>
+              {params.row.isEnabled?"Cấm":"Bỏ cấm"}
+            </Button>
           </div>
         );
       },
@@ -63,7 +64,6 @@ const Datatable = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

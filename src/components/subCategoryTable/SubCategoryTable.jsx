@@ -27,13 +27,13 @@ const SubCategoriesTable = ({ categoryId }) => {
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action",
+      headerName: "",
       width: 200,
       renderCell: (params) => {
         return (
           <div className="cellAction">
             <Link to={"/skills/"+params.row.id} style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+              <div className="viewButton">Xem</div>
             </Link>
           </div>
         );
@@ -54,7 +54,6 @@ const SubCategoriesTable = ({ categoryId }) => {
         columns={categoryColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

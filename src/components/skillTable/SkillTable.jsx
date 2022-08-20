@@ -10,7 +10,6 @@ import { fetchSkills, selectSkills, selectSkillStatus } from "../../redux/catego
 
 const SKillTable = ({ subCategoryId }) => {
   const listSkill = useSelector(selectSkills);
-  const status = useSelector(selectSkillStatus)
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   
@@ -19,10 +18,8 @@ const SKillTable = ({ subCategoryId }) => {
   }, []);
 
   useEffect(() => {
-    if(status=="success"){
       setData(listSkill);
-    }
-  },[status]);
+  },[listSkill]);
 
   const [open, setOpen] = useState(false);
 
@@ -41,7 +38,7 @@ const SKillTable = ({ subCategoryId }) => {
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action",
+      headerName: "",
       width: 200,
       renderCell: (params) => {
         return (
@@ -49,7 +46,7 @@ const SKillTable = ({ subCategoryId }) => {
             <a href={"http://localhost:3000/subCategories/" + params.row.id}>
               <div
                 className="viewButton"
-              >View</div>
+              >Xem</div>
             </a>
             <Button
               className="deleteButton"
@@ -58,7 +55,7 @@ const SKillTable = ({ subCategoryId }) => {
                 handleClickOpen();
               }}
             >
-              Delete
+              Xóa
             </Button>
             <Dialog
               open={open}
@@ -100,7 +97,6 @@ const SKillTable = ({ subCategoryId }) => {
         columns={SKillColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

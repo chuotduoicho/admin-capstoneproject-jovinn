@@ -39,10 +39,10 @@ const Home = () => {
           <Featured amount={countData.totalRevenue}/>
           <Chart title="Thu nhập trong 6 tháng gần nhất" aspect={2 / 1} chartData={revenueByMonth}/>
         </div>
-        <div className="listContainer">
+        {/* <div className="listContainer">
           <div className="listTitle">Các giao dịch gần đây</div>
           <Table />
-        </div>
+        </div> */}
       </div>
     </div>
   );

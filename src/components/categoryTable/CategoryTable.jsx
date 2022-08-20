@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategories, selectAllCategories } from "../../redux/categorySlice";
 import { useEffect } from "react";
+import Categories from "../../pages/categories/Categories";
 
 const CategoriesTable = () => {
   const listCategories = useSelector(selectAllCategories);
@@ -15,14 +16,14 @@ const CategoriesTable = () => {
     dispatch(fetchCategories());
   }, []);
 
-  useEffect(() => {
-    setData(listCategories);
-  }, [listCategories]);
+  // useEffect(() => {
+  //   setData(listCategories);
+  // }, [listCategories]);
 
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action",
+      headerName: "",
       width: 200,
       renderCell: (params) => {
         return (
@@ -30,7 +31,7 @@ const CategoriesTable = () => {
               <Link to={"/subCategories/" + params.row.id}>
               <div
                 className="viewButton"
-              >View</div>
+              >Xem danh mục con</div>
               </Link>
           </div>
         );
@@ -47,11 +48,10 @@ const CategoriesTable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={listCategories}
         columns={categoryColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

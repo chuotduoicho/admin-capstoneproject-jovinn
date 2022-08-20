@@ -11,17 +11,19 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../../redux/authSlice";
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
   const navigate = useNavigate();
   const handleLogout = (e) => {
     e.preventDefault();
-    navigate("/login");
+    dispatch(logout());
+    navigate("/");
   };
   return (
     <div className="sidebar">
       <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <span className="logo">Jovinn.</span>
         </Link>
       </div>
@@ -29,7 +31,7 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
-          <li onClick={() => navigate("/")}>
+          <li onClick={() => navigate("/home")}>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>

@@ -169,25 +169,60 @@ export const userRows = [
 export const categoryColumns = [
   {
     field: "id",
-    headerName: "ID",
+    headerName: "Mã danh mục",
     width: 250,
   },
   {
     field: "name",
-    headerName: "Category",
+    headerName: "Tên danh mục",
     width: 230,
-    // renderCell: (params) => {
-    //   return <div className="cellWithImg">{params.row.categoryName}</div>;
-    // },
   },
   {
     field: "createAt",
-    headerName: "Created At",
+    headerName: "Khởi tạo lúc",
     width: 250,
   },
   {
     field: "updatedAt",
-    headerName: "Updated At",
+    headerName: "Cập nhật lúc",
+    width: 250,
+  }
+];
+
+export const transactionColumns = [
+  {
+    field: "paymentCode",
+    headerName: "ID",
+    width: 160,
+  },
+  {
+    field: "userId",
+    headerName: "Mã người dùng",
+    width: 230,
+  },
+  {
+    field: "fullName",
+    headerName: "Họ tên",
+    width: 250,
+  },
+  {
+    field: "dateCreated",
+    headerName: "Ngày tạo",
+    width: 250,
+  },
+  {
+    field: "amount",
+    headerName: "Số tiền",
+    width: 160,
+  },
+  {
+    field: "method",
+    headerName: "Phương thức",
+    width: 160,
+  },
+  {
+    field: "description",
+    headerName: "Ghi chú",
     width: 250,
   }
 ];

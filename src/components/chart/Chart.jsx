@@ -9,13 +9,14 @@ import {
 } from "recharts";
 
 const Chart = ({ aspect, title, chartData }) => {
+  const date = new Date().getDate();
   const data = [
-    { name: "January", Total: 0 },
-    { name: "February", Total: 0 },
-    { name: "March", Total: 0 },
-    { name: "April", Total: 0 },
-    { name: "May", Total: 0 },
-    { name: "June", Total: 0 },
+    { name: "February", Total: chartData[0] },
+    { name: "March", Total: chartData[1] },
+    { name: "April", Total: chartData[2] },
+    { name: "May", Total: chartData[3] },
+    { name: "June", Total: chartData[4] },
+    { name: "July", Total: chartData[5] },
   ];
   
   return (

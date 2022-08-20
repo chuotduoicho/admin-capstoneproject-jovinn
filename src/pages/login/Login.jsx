@@ -21,7 +21,7 @@ const Login = () => {
         setSuccessful(true);
       })
       .then(() => {
-        navigate("/");
+        navigate("/home");
       })
       .catch(() => {
         setSuccessful(false);

@@ -39,7 +39,7 @@ const NewCategory = () => {
           <div className="left">
           </div>
           <div className="right">
-            <form>
+            <div className="form">
               <div className="formInput" >
                 <label>Tên danh mục</label>
                 <input  
@@ -49,7 +49,7 @@ const NewCategory = () => {
                 />
               </div>
               <button onClick={handleAdd}>Tạo mới</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
