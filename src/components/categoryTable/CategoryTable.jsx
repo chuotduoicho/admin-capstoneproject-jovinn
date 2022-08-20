@@ -13,13 +13,11 @@ const CategoriesTable = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     dispatch(fetchCategories());
-    setData(listCategories);
   }, []);
-  
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  useEffect(() => {
+    setData(listCategories);
+  }, [listCategories]);
 
   const actionColumn = [
     {
@@ -34,12 +32,6 @@ const CategoriesTable = () => {
                 className="viewButton"
               >View</div>
               </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div>
           </div>
         );
       },
@@ -50,7 +42,7 @@ const CategoriesTable = () => {
       <div className="datatableTitle">
         Cách Danh mục
         <Link to="/categories/new" className="link">
-          Add New
+          Tạo mới
         </Link>
       </div>
       <DataGrid
