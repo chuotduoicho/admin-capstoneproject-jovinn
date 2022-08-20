@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 const Widget = ({ type, count}) => {
   let data;
   //temporary
-  const amount = count;
-  const diff = 20;
 
   switch (type) {
     case "users":
@@ -48,7 +46,7 @@ const Widget = ({ type, count}) => {
       data = {
         title: "YÊU CẦU",
         link: "Xem danh sách yêu cầu",
-        value: "18",
+        value: count,
         icon: (
           <ReceiptLongIcon
             className="icon"
@@ -61,7 +59,7 @@ const Widget = ({ type, count}) => {
       data = {
         title: "HƠP ĐỒNG",
         link: "Xem danh sách hợp đồng",
-        value: "13",
+        value: count,
         icon: (
           <AssignmentIcon
             className="icon"
@@ -84,9 +82,9 @@ const Widget = ({ type, count}) => {
         <span className="counter">
           {data.value}
         </span>
-        <Link to={"/" + data.title}>
+        {/* <Link to={"/" + data.title}>
           <span className="link">{data.link}</span>
-        </Link>
+        </Link> */}
       </div>
       <div className="right">
         {/* <div className="percentage positive">

@@ -3,7 +3,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const Featured = (amount) => {
+const Featured = ({amount}) => {
   return (
     <div className="featured">
       <div className="top">
@@ -15,7 +15,7 @@ const Featured = (amount) => {
           <CircularProgressbar value={0} text={"0%"} strokeWidth={5} />
         </div>
         <p className="title">Doanh thu hôm nay</p>
-        <p className="amount">0</p>
+        <p className="amount">{amount}</p>
         <p className="desc">
           Previous transactions processing. Last payments may not be included.
         </p>

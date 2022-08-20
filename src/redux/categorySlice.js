@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import categoryService from "../services/category.service";
 
-const categories = JSON.parse(localStorage.getItem("categories"));
-const subcategories = JSON.parse(localStorage.getItem("subCategories"));
 const initialState = {
-  getAllCategories: categories ? categories : [],
-  getSubCategories: subcategories ? subcategories : [],
+  getAllCategories: [],
+  getSubCategories: [],
   getSkills: [],
   subcategoryStatus: "idle",
   skillStatus: "idle",

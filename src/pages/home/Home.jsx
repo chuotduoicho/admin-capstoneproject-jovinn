@@ -6,7 +6,7 @@ import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
 import { useSelector, useDispatch } from "react-redux";
-import { selectTotalUsers, selectTotalServices, fetchTotalUser, fetchTotalService } from "../../redux/adminSlice";
+import { fetchCountData, fetchRevenueByMonths, selectCountData, selectRevenueByMonth } from "../../redux/adminSlice";
 import { React, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,28 +18,26 @@ const Home = () => {
     if (!admin) {
       navigate("/login");
     } else {
-      dispatch(fetchTotalUser());
-      dispatch(fetchTotalService());
+      dispatch(fetchCountData());
+      dispatch(fetchRevenueByMonths());
     }
   }, [admin]);
-  const totalUser = useSelector(selectTotalUsers);
-  const totalService = useSelector(selectTotalServices);
-  console.log("users", totalUser);
-  console.log("services", totalService);
+  const countData = useSelector(selectCountData);
+  const revenueByMonth = useSelector(selectRevenueByMonth);
   return (
     <div className="home">
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="users" count={totalUser.totalUser} />
-          <Widget type="requests" />
-          <Widget type="contracts" />
-          <Widget type="services" count={totalService.totalService} />
+          <Widget type="users" count={countData.totalUser} />
+          <Widget type="requests" count={countData.totalRequest}/>
+          <Widget type="contracts" count={countData.totalContract}/>
+          <Widget type="services" count={countData.totalService} />
         </div>
         <div className="charts">
-          <Featured />
-          <Chart title="Thu nhập trong 6 tháng gần nhất" aspect={2 / 1} />
+          <Featured amount={countData.totalRevenue}/>
+          <Chart title="Thu nhập trong 6 tháng gần nhất" aspect={2 / 1} chartData={revenueByMonth}/>
         </div>
         <div className="listContainer">
           <div className="listTitle">Các giao dịch gần đây</div>

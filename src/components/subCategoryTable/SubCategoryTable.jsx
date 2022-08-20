@@ -24,10 +24,6 @@ const SubCategoriesTable = ({ categoryId }) => {
     }
   },[status]);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
-
   const actionColumn = [
     {
       field: "action",
@@ -39,12 +35,6 @@ const SubCategoriesTable = ({ categoryId }) => {
             <Link to={"/skills/"+params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div>
           </div>
         );
       },
@@ -54,9 +44,9 @@ const SubCategoriesTable = ({ categoryId }) => {
     <div className="datatable">
       <div className="datatableTitle">
         Các danh mục con
-        <a to="new" className="link">
-          Add New
-        </a>
+        <Link to="new" className="link">
+          Tạo mới
+        </Link>
       </div>
       <DataGrid
         className="datagrid"

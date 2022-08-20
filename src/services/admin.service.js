@@ -22,9 +22,9 @@ const getRevenueByMonth = () => {
     });
 }
 
-const getTotalUsers = () => {
-    return axios.get(API_URL + "/admin/count-total-user", { headers: authHeader() }).then((response) => {
-        localStorage.setItem("totalUsers", JSON.stringify(response.data));
+const getCountData = () => {
+    return axios.get(API_URL + "/admin/get-all-count-data", { headers: authHeader() }).then((response) => {
+        localStorage.setItem("countData", JSON.stringify(response.data));
         return response.data;
     });
 };
@@ -46,6 +46,6 @@ const AdminService = {
     getRevenueByMonth,
     getTotalRevenue,
     getTotalServices,
-    getTotalUsers
+    getCountData
 }
 export default AdminService;

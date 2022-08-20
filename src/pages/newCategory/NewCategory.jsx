@@ -4,26 +4,28 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addCategory, fetchCategories, selectSubcategoryStatus } from "../../redux/categorySlice";
+import { addCategory, fetchCategories } from "../../redux/categorySlice";
 
 const NewCategory = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  cosnt [success, setSuccess] = useState("");
+  const [catName, setCatName] = useState("");
+  const [success, setSuccess] = useState("");
   const category = {
-    name: name
+    name: catName,
   };
   const handleAdd = (e) => {
     e.preventDefault();
-    dispatch(addCategory({category}))
+    dispatch(addCategory({ category }))
       .unwrap()
       .then(() => {
         dispatch(fetchCategories());
         setSuccess("Tạo danh mục thành công!");
         navigate("/categories")
       })
+      .catch(() => {
 
+      });
   }
   return (
     <div className="new">
@@ -40,9 +42,13 @@ const NewCategory = () => {
             <form>
               <div className="formInput" >
                 <label>Tên danh mục</label>
-                <input placeholder="Nhập tên danh mục" />
+                <input  
+                  placeholder="Nhập tên danh mục" 
+                  onChange={(e) => setCatName(e.target.value)} 
+                  required
+                />
               </div>
-              <button>Tạo mới</button>
+              <button onClick={handleAdd}>Tạo mới</button>
             </form>
           </div>
         </div>

@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import userService from "../services/user.service";
-
-const getAllUsers = JSON.parse(localStorage.getItem("users"));
+const users = JSON.parse(localStorage.getItem("users"));
 const initialState = {
-    listUsers : getAllUsers ? getAllUsers : [],
+    listUsers: users ? users : [],
     status: "idle"
 };
 
@@ -11,6 +10,7 @@ export const fetchAllUsers = createAsyncThunk(
     "user/fetchAllUsers",
     async () => {
         const data = await userService.getAllUsers();
+        console.log(data);
         return data;
     }
 );
@@ -26,24 +26,24 @@ export const banOrUnbanUser = createAsyncThunk(
 export const userSlice = createSlice({
     name: "user",
     initialState,
-    extraReducers:{
-        [fetchAllUsers.pending]:(state, action) => {
+    extraReducers: {
+        [fetchAllUsers.pending]: (state, action) => {
             state.status = "loading";
         },
-        [fetchAllUsers.fulfilled]:(state, { payload }) => {
+        [fetchAllUsers.fulfilled]: (state, { payload }) => {
             state.listUsers = payload;
             state.status = "success";
         },
-        [fetchAllUsers.pending]:(state, action) => {
+        [fetchAllUsers.pending]: (state, action) => {
             state.status = "loading";
         },
-        [banOrUnbanUser.pending]:(state, action) => {
+        [banOrUnbanUser.pending]: (state, action) => {
             state.status = "loading";
         },
-        [banOrUnbanUser.fulfilled]:(state, { payload }) => {
+        [banOrUnbanUser.fulfilled]: (state, { payload }) => {
             state.status = "success";
         },
-        [banOrUnbanUser.pending]:(state, action) => {
+        [banOrUnbanUser.pending]: (state, action) => {
             state.status = "loading";
         },
     }

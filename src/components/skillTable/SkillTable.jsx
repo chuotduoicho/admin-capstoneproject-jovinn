@@ -90,7 +90,7 @@ const SKillTable = ({ subCategoryId }) => {
     <div className="datatable">
       <div className="datatableTitle">
         Cách Kỹ năng
-        <Link to="/categories/new" className="link">
+        <Link to="new" className="link">
           Thêm mới
         </Link>
       </div>

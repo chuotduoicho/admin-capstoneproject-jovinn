@@ -16,7 +16,7 @@ import Categories from "./pages/categories/Categories";
 import SubCategories from "./pages/subCategories/SubCategories";
 import Skills from "./pages/skills/Skill";
 import NewSkill from "./pages/newSkill/NewSkill";
-import Services from "./pages/services/Services";
+import NewCategory from "./pages/newCategory/NewCategory";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -39,7 +39,7 @@ function App() {
             </Route>
             <Route path="admins">
               <Route index element={<Admins />} />
-              <Route path=":adminId" element={<Single />} />
+              <Route path=":adminId" element={<Profile />} />
               <Route
                 path="new"
                 element={<New inputs={adminInputs} title="Thêm mới quản trị viên" />}
@@ -49,7 +49,7 @@ function App() {
               <Route index element={<Categories />} />
               <Route
                 path="new"
-                element={<New inputs={categoryInputs} title="Thêm mới kỹ năng" />}
+                element={<NewCategory/>}
               />
             </Route>
             <Route path="subCategories/:categoryId">
@@ -63,8 +63,8 @@ function App() {
             <Route path="skills/:subCategoryId" >
             <Route index element={<Skills />} />
             <Route
-                path="newSkill"
-                element={<NewSkill inputs={productInputs} title="Thêm mới kỹ năng" />}                
+                path="new"
+                element={<New inputs={skillInputs} title="Thêm mới kỹ năng" />}                
               />
             </Route>
             <Route path="orders">

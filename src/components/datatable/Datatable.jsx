@@ -1,14 +1,30 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { userColumns } from "../../datatablesource";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { banOrUnbanUser, fetchAllUsers, selectAllUsers } from "../../redux/userSlice";
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  //const [data, setData] = useState([]);
+  const listUsers = useSelector(selectAllUsers);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+    console.log("list user", listUsers);
+    //setData(listUsers);
+  },[]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    
+    dispatch(banOrUnbanUser(id))
+      .wrap()
+      .then(() => {
+        dispatch(fetchAllUsers());
+      });
+      //navigate("/users");
   };
 
   const actionColumn = [
@@ -22,12 +38,12 @@ const Datatable = () => {
             <Link to="/users/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">Xem</div>
             </Link>
-            <div
+            <button
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
             >
-              Dừng
-            </div>
+              {params.row.isEnabled?"Dừng":"Bỏ dừng"}
+            </button>
           </div>
         );
       },
@@ -43,7 +59,7 @@ const Datatable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={listUsers}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}

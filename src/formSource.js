@@ -83,12 +83,6 @@ export const userInputs = [
       type: "text",
       placeholder: "Nhập tên danh mục",
     },
-    {
-      id: 2,
-      label: "Danh mục",
-      type: "text",
-      placeholder: "Lập trình",
-    }
   ];
 
   export const skillInputs = [
@@ -98,18 +92,7 @@ export const userInputs = [
       type: "text",
       placeholder: "Nhập kỹ năng",
     },
-    {
-      id: 2,
-      label: "Danh mục con",
-      type: "text",
-      placeholder: "Lập trình Back-end",
-    },
-    {
-      id: 3,
-      label: "Danh mục",
-      type: "text",
-      placeholder: "Lập trình",
-    }
+
   ];
 
   export const productInputs = [

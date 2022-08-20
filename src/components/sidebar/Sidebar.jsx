@@ -1,22 +1,12 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-import NoteAltIcon from "@mui/icons-material/NoteAlt";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import ManageSearchIcon from "@mui/icons-material/ManageSearch";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -65,7 +55,7 @@ const Sidebar = () => {
           <Link to="/orders" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="icon" />
-              <span>Đơn đặt hàng</span>
+              <span>Hợp đồng</span>
             </li>
           </Link>
           {/* <Link to="/requests" style={{ textDecoration: "none" }}>

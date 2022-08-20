@@ -1,13 +1,12 @@
 export const userColumns = [
   {
-    field: "user",
-    headerName: "Người dùng",
+    field: "fullName",
+    headerName: "Tên người dùng",
     width: 230,
     renderCell: (params) => {
       return (
-        <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.userName}
+        <div>
+          {params.row.firstName +" "+ params.row.lastName}
         </div>
       );
     },
@@ -18,18 +17,54 @@ export const userColumns = [
     width: 230,
   },
   {
+    field: "phoneNumber",
+    headerName: "Số ĐT",
+    width: 230,
+  },
+  {
     field: "status",
     headerName: "Trạng thái",
     width: 160,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.isEnabled}`}>
-          {params.row.isEnabled}
+        <div className={`cellWithStatus ${params.row.isEnabled?'active':'disabled'}`}>
+          {params.row.isEnabled?"active":"disabled"}
         </div>
       );
     },
   },
 ];
+
+export const adminColumns = [
+  {
+    field: "username",
+    headerName: "Tên đăng nhập",
+    width: 230,
+  },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 230,
+  },
+  {
+    field: "phoneNumber",
+    headerName: "Số ĐT",
+    width: 230,
+  },
+  {
+    field: "status",
+    headerName: "Trạng thái",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.status}`}>
+          {params.row.status}
+        </div>
+      );
+    },
+  },
+];
+
 
 //temporary data
 export const userRows = [
