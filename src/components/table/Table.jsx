@@ -65,17 +65,18 @@ const List = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Tracking ID</TableCell>
-            <TableCell className="tableCell">Product</TableCell>
-            <TableCell className="tableCell">Customer</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Payment Method</TableCell>
-            <TableCell className="tableCell">Status</TableCell>
+            <TableCell className="tableCell">Mã giao dịch</TableCell>
+            <TableCell className="tableCell">ID người dùng</TableCell>
+            <TableCell className="tableCell">Tên người dùng</TableCell>
+            <TableCell className="tableCell">Ngày thanh toán</TableCell>
+            <TableCell className="tableCell">Số tiền</TableCell>
+            <TableCell className="tableCell">Đơn vị</TableCell>
+            <TableCell className="tableCell">Ghi chú</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {/* {rows.map((row) => (
+
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">
@@ -92,7 +93,8 @@ const List = () => {
                 <span className={`status ${row.status}`}>{row.status}</span>
               </TableCell>
             </TableRow>
-          ))}
+
+          ))} */}
         </TableBody>
       </Table>
     </TableContainer>

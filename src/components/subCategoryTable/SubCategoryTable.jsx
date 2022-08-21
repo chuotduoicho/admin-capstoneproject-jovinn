@@ -1,40 +1,39 @@
-import "./categoryTable.scss";
+import "./subCategoryTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-
 import { categoryColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchCategories,
-  selectAllCategories,
-} from "../../redux/categorySlice";
+import { fetchSubCategories, selectSubcategories, selectSubcategoryStatus } from "../../redux/categorySlice";
 import { useEffect } from "react";
-import Categories from "../../pages/categories/Categories";
 
-const CategoriesTable = () => {
-  const listCategories = useSelector(selectAllCategories);
-  const dispatch = useDispatch();
+const SubCategoriesTable = ({ categoryId }) => {
+  const subCategories = useSelector(selectSubcategories);
+  const status = useSelector(selectSubcategoryStatus);
   const [data, setData] = useState([]);
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, []);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   setData(listCategories);
-  // }, [listCategories]);
+  useEffect(() => {
+    dispatch(fetchSubCategories(categoryId));
+  }, []);
+  console.log("subCats", categoryId);
+
+  useEffect(() => {
+    if (status == "success") {
+      setData(subCategories);
+    }
+  },[status]);
 
   const actionColumn = [
     {
       field: "action",
-
       headerName: "",
       width: 200,
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={"/subCategories/" + params.row.id}>
-              <div className="viewButton">Xem danh mục con</div>
+            <Link to={"/skills/"+params.row.id} style={{ textDecoration: "none" }}>
+              <div className="viewButton">Xem</div>
             </Link>
           </div>
         );
@@ -44,14 +43,14 @@ const CategoriesTable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Cách Danh mục
-        <Link to="/categories/new" className="link">
+        Các danh mục con
+        <Link to="new" className="link">
           Tạo mới
         </Link>
       </div>
       <DataGrid
         className="datagrid"
-        rows={listCategories}
+        rows={data}
         columns={categoryColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
@@ -60,4 +59,4 @@ const CategoriesTable = () => {
   );
 };
 
-export default CategoriesTable;
+export default SubCategoriesTable;

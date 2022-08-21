@@ -1,7 +1,7 @@
 import "./transactions.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import Datatable from "../../components/datatable/Datatable";
+import TransactionTable from "../../components/transactionTable/TransactionTable";
 
 const Transactions = () => {
   return (
@@ -10,6 +10,8 @@ const Transactions = () => {
       <div className="listContainer">
         <Navbar />
         {/* <Datatable /> */}
+
+        <TransactionTable />
       </div>
     </div>
   );

@@ -1,53 +1,43 @@
 import "./transactionTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  exportWithdrawRequest,
+  fetchTransactions,
+  selectAllTransations,
+} from "../../redux/transactionSlice";
+import { Button } from "@mui/material";
+import { transactionColumns } from "../../datatablesource";
 
 const TransactionTable = () => {
-  const [data, setData] = useState(userRows);
-
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
-
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Action",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div>
-          </div>
-        );
-      },
-    },
-  ];
+  const transactions = useSelector(selectAllTransations);
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTransactions());
+  }, []);
+  useEffect(() => {
+    setData(transactions);
+  }, [transactions]);
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" className="link">
-          Add New
-        </Link>
+        Các giao dịch
+        <button
+          className="link"
+          onClick={() => dispatch(exportWithdrawRequest())}
+        >
+          Xuất file yêu cầu rút tiền
+        </button>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={transactionColumns}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

@@ -1,16 +1,10 @@
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
   {
-    field: "user",
-    headerName: "User",
+    field: "fullName",
+    headerName: "Tên người dùng",
     width: 230,
     renderCell: (params) => {
-      return (
-        <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
-        </div>
-      );
+      return <div>{params.row.firstName + " " + params.row.lastName}</div>;
     },
   },
   {
@@ -20,13 +14,48 @@ export const userColumns = [
   },
 
   {
-    field: "age",
-    headerName: "Age",
-    width: 100,
+    field: "phoneNumber",
+    headerName: "Số ĐT",
+    width: 230,
   },
   {
     field: "status",
-    headerName: "Status",
+    headerName: "Trạng thái",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div
+          className={`cellWithStatus ${
+            params.row.isEnabled ? "active" : "disabled"
+          }`}
+        >
+          {params.row.isEnabled ? "active" : "disabled"}
+        </div>
+      );
+    },
+  },
+];
+
+export const adminColumns = [
+  {
+    field: "username",
+    headerName: "Tên đăng nhập",
+    width: 230,
+  },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 230,
+  },
+  {
+    field: "phoneNumber",
+    headerName: "Số ĐT",
+    width: 230,
+  },
+  {
+    field: "status",
+    headerName: "Trạng thái",
+
     width: 160,
     renderCell: (params) => {
       return (
@@ -42,78 +71,95 @@ export const userColumns = [
 export const userRows = [
   {
     id: 1,
-    username: "Snow",
+    username: "caubengoxnghex",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     status: "active",
-    email: "1snow@gmail.com",
-    age: 35,
-  },
-  {
-    id: 2,
-    username: "Jamie Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "2snow@gmail.com",
-    status: "passive",
-    age: 42,
-  },
-  {
-    id: 3,
-    username: "Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "3snow@gmail.com",
-    status: "pending",
-    age: 45,
-  },
-  {
-    id: 4,
-    username: "Stark",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "4snow@gmail.com",
-    status: "active",
-    age: 16,
-  },
-  {
-    id: 5,
-    username: "Targaryen",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "5snow@gmail.com",
-    status: "passive",
+    email: "caubengoxnghex@yahoo.com",
     age: 22,
   },
   {
-    id: 6,
-    username: "Melisandre",
+    id: 2,
+    username: "gaconbietbay",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "6snow@gmail.com",
+    email: "phunguyen@gmail.com",
     status: "active",
-    age: 15,
+    age: 22,
+  },
+  {
+    id: 3,
+    username: "khongduockhoc",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "duc246@gmail.com",
+    status: "active",
+    age: 21,
+  },
+  {
+    id: 4,
+    username: "kemdanuoclanh",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "kemdanuoclanh@gmail.com",
+    status: "active",
+    age: 20,
+  },
+  {
+    id: 5,
+    username: "wibuchua",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "dung123@gmail.com",
+    status: "active",
+    age: 20,
+  },
+  {
+    id: 6,
+    username: "meomoc",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "duceda246@gmail.com",
+    status: "active",
+    age: 20,
   },
   {
     id: 7,
-    username: "Clifford",
+    username: "tung",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "7snow@gmail.com",
-    status: "passive",
-    age: 44,
+    email: "tung@gmail.com",
+    status: "active",
+    age: 20,
   },
   {
     id: 8,
-    username: "Frances",
+    username: "tai",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "8snow@gmail.com",
+    email: "taivo@gmail.com",
     status: "active",
-    age: 36,
+    age: 22,
   },
   {
     id: 9,
-    username: "Roxie",
+    username: "phuc123",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "snow@gmail.com",
-    status: "pending",
-    age: 65,
+    email: "phuc@gmail.com",
+    status: "active",
+    age: 22,
   },
   {
     id: 10,
+    username: "Roxie",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "snow@gmail.com",
+    status: "active",
+    age: 24,
+  },
+  {
+    id: 11,
+    username: "Roxie",
+    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    email: "snow@gmail.com",
+    status: "active",
+    age: 65,
+  },
+  {
+    id: 12,
+
     username: "Roxie",
     img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     email: "snow@gmail.com",
@@ -123,90 +169,80 @@ export const userRows = [
 ];
 
 export const categoryColumns = [
-  { field: "id", headerName: "ID", width: 70 },
   {
-    field: "categoryName",
-    headerName: "Category",
-    width: 230,
-    renderCell: (params) => {
-      return <div className="cellWithImg">{params.row.categoryName}</div>;
-    },
+    field: "id",
+    headerName: "Mã danh mục",
+    width: 250,
   },
   {
-    field: "numberService",
-    headerName: "Number Service",
+    field: "name",
+    headerName: "Tên danh mục",
     width: 230,
+  },
+  {
+    field: "createAt",
+    headerName: "Khởi tạo lúc",
+    width: 250,
+  },
+  {
+    field: "updatedAt",
+    headerName: "Cập nhật lúc",
+    width: 250,
+  },
+];
+
+export const transactionColumns = [
+  {
+    field: "paymentCode",
+    headerName: "Mã giao dịch",
+    width: 160,
+  },
+  {
+    field: "fullName",
+    headerName: "Họ tên",
+    width: 250,
+  },
+  {
+    field: "dateCreated",
+    headerName: "Ngày tạo",
+    width: 250,
+  },
+  {
+    field: "amount",
+    headerName: "Số tiền",
+    width: 160,
+  },
+  {
+    field: "type",
+    headerName: "Phương thức",
+    width: 160,
+  },
+  {
+    field: "message",
+    headerName: "Ghi chú",
+    width: 250,
+  },
+];
+
+export const SKillColumns = [
+  {
+    field: "id",
+    headerName: "ID",
+    width: 250,
+  },
+  {
+    field: "name",
+    headerName: "Tên kỹ năng",
+    width: 230,
+  },
+  {
+    field: "subCategoryId",
+    headerName: "Mã danh mục con",
+    width: 250,
   },
 ];
 
 //temporary data
-export const categoryRows = [
-  {
-    id: 1,
-    categoryName: "A",
-    numberService: 21,
-  },
-  {
-    id: 2,
-    categoryName: "B",
-    numberService: 2,
-  },
-  {
-    id: 3,
-    categoryName: "C",
-    numberService: 11,
-  },
-  {
-    id: 4,
-    categoryName: "D",
-    numberService: 22,
-  },
-  {
-    id: 5,
-    categoryName: "E",
-    numberService: 11,
-  },
-  {
-    id: 6,
-    categoryName: "F",
-    numberService: 21,
-  },
-  {
-    id: 7,
-    categoryName: "G",
-    numberService: 21,
-  },
-  {
-    id: 8,
-    categoryName: "H",
-    numberService: 21,
-  },
-  {
-    id: 9,
-    categoryName: "E",
-    numberService: 21,
-  },
-  {
-    id: 10,
-    categoryName: "Q",
-    numberService: 21,
-  },
-  {
-    id: 11,
-    categoryName: "U",
-    numberService: 21,
-  },
-  {
-    id: 12,
-    categoryName: "I",
-    numberService: 21,
-  },
-  {
-    id: 13,
-    categoryName: "O",
-    numberService: 21,
-  },
-];
 
 export const serviceColumns = [
   { field: "id", headerName: "ID", width: 70 },

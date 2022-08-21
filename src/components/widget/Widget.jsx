@@ -1,23 +1,20 @@
 import "./widget.scss";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import { Link } from "react-router-dom";
-const Widget = ({ type }) => {
-  let data;
 
+const Widget = ({ type, count }) => {
+  let data;
   //temporary
-  const amount = 100;
-  const diff = 20;
 
   switch (type) {
-    case "user":
+    case "users":
       data = {
-        title: "USERS",
-        isMoney: false,
-        link: "See all users",
+        title: "SỐ NGƯỜI DÙNG",
+        link: "Xem danh sách người dùng",
+        value: count,
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -29,13 +26,14 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+
+    case "services":
       data = {
-        title: "ORDERS",
-        isMoney: false,
-        link: "View all orders",
+        title: "DỊCH VỤ",
+        link: "Xem danh sách dịch vụ",
+        value: count,
         icon: (
-          <ShoppingCartOutlinedIcon
+          <HomeRepairServiceIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -45,26 +43,28 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+
+    case "requests":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "YÊU CẦU",
+        link: "Xem danh sách yêu cầu",
+        value: count,
         icon: (
-          <MonetizationOnOutlinedIcon
+          <ReceiptLongIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
           />
         ),
       };
       break;
-    case "balance":
+
+    case "contracts":
       data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
+        title: "HƠP ĐỒNG",
+        link: "Xem danh sách hợp đồng",
+        value: count,
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <AssignmentIcon
             className="icon"
             style={{
               backgroundColor: "rgba(128, 0, 128, 0.2)",
@@ -82,18 +82,16 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        <span className="counter">
-          {data.isMoney && "$"} {amount}
-        </span>
-        <Link to={"/" + data.title}>
+        <span className="counter">{data.value}</span>
+        {/* <Link to={"/" + data.title}>
           <span className="link">{data.link}</span>
-        </Link>
+        </Link> */}
       </div>
       <div className="right">
-        <div className="percentage positive">
+        {/* <div className="percentage positive">
           <KeyboardArrowUpIcon />
           {diff} %
-        </div>
+        </div> */}
         {data.icon}
       </div>
     </div>

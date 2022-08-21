@@ -19,14 +19,17 @@ const AdminTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+            <Link
+              to={"/admins/" + params.row.id}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="viewButton">Xem</div>
             </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}
             >
-              Delete
+              Xóa
             </div>
           </div>
         );
@@ -36,9 +39,9 @@ const AdminTable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List Admins
+        Danh sách quản trị viên
         <Link to="/admins/new" className="link">
-          Add New
+          Thêm mới
         </Link>
       </div>
       <DataGrid

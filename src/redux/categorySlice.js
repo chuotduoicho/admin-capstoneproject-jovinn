@@ -1,0 +1,90 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import categoryService from "../services/category.service";
+
+const initialState = {
+  getAllCategories: [],
+  getSubCategories: [],
+  getSkills: [],
+  subcategoryStatus: "idle",
+  skillStatus: "idle",
+  status: "idle"
+}
+export const fetchCategories = createAsyncThunk(
+  "category/fetchCategories",
+  async () => {
+    const data = await categoryService.getAllCategories();
+    console.log(data);
+    return data;
+  }
+);
+
+export const addCategory = createAsyncThunk(
+  "category/addCategories",
+  async (category) => {
+    const data = await categoryService.addCategory(category);
+    console.log(data);
+    return data;
+  }
+);
+
+export const fetchSubCategories = createAsyncThunk(
+  "category/fetchSubCategories",
+  async (categoryId) => {
+    const data = await categoryService.getSubCategories(categoryId);
+    return data;
+  }
+);
+
+export const fetchSkills = createAsyncThunk(
+  "category/fetchSkills",
+  async (subCategoryId) => {
+    const data = await categoryService.getSkills(subCategoryId);
+    console.log(data);
+    return data;
+  }
+);
+
+export const categorySlice = createSlice({
+  name: "category",
+  initialState,
+  extraReducers: {
+    [fetchCategories.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [fetchCategories.fulfilled]: (state, { payload }) => {
+      state.getAllCategories = payload;
+      state.status = "success";
+    },
+    [fetchCategories.rejected]: (state, action) => {
+      state.status = "failed";
+    },
+    [fetchSubCategories.pending]: (state, action) => {
+      state.subcategoryStatus = "loading";
+    },
+    [fetchSubCategories.fulfilled]: (state, { payload }) => {
+      state.getSubCategories = payload;
+      state.subcategoryStatus = "success";
+    },
+    [fetchSubCategories.rejected]: (state, action) => {
+      state.subcategoryStatus = "failed";
+    },
+    [fetchSkills.pending]: (state, action) => {
+      state.skillStatus = "loading";
+    },
+    [fetchSkills.fulfilled]: (state, { payload }) => {
+      state.getSkills = payload;
+      state.skillStatus = "success";
+    },
+    [fetchSkills.rejected]: (state, action) => {
+      state.skillStatus = "failed";
+    },
+  },
+});
+
+const { reducer } = categorySlice;
+export default reducer;
+export const selectAllCategories = (state) => state.category.getAllCategories;
+export const selectSubcategories = (state) => state.category.getSubCategories;
+export const selectSubcategoryStatus = (state) => state.category.subcategoryStatus;
+export const selectSkillStatus = (state) => state.category.skillStatus;
+export const selectSkills = (state) => state.category.getSkills;

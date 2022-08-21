@@ -1,33 +1,53 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+
+import { userColumns } from "../../datatablesource";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  banOrUnbanUser,
+  fetchAllUsers,
+  selectAllUsers,
+} from "../../redux/userSlice";
+import { Button } from "@mui/material";
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  const listUsers = useSelector(selectAllUsers);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+    console.log("list user", listUsers);
+    //setData(listUsers);
+  }, []);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const handleBan = (id) => {
+    dispatch(banOrUnbanUser(id))
+      .unwrap()
+      .then(() => {
+        dispatch(fetchAllUsers());
+      });
+    navigate("/users");
   };
 
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action",
+
+      headerName: "",
+
       width: 200,
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <div
+            <div className="viewButton">Xem</div>
+            <Button
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleBan(params.row.id)}
             >
-              Delete
-            </div>
+              {params.row.isEnabled ? "Cấm" : "Bỏ cấm"}
+            </Button>
           </div>
         );
       },
@@ -36,18 +56,17 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List Users
+        Danh sách người dùng
         {/* <Link to="/users/new" className="link">
           Add New
         </Link> */}
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={listUsers}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );
