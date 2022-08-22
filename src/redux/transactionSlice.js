@@ -70,3 +70,5 @@ export const transactionSlice = createSlice({
 const { reducer } = transactionSlice;
 export default reducer;
 export const selectAllTransations = (state) => state.transaction.transactions;
+export const selectAllTransationsExport = (state) =>
+  state.transaction.transactionsExport;

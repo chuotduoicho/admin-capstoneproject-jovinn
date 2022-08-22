@@ -12,7 +12,9 @@ const getAllTransaction = () => {
 };
 const getListTransaction = () => {
   return axios
-    .get(API_URL + "/admin/list-withdraw-request", { headers: authHeader() })
+    .get(API_URL + "/admin/list-withdraw-request?year=2022&month=8", {
+      headers: authHeader(),
+    })
     .then((response) => {
       return response.data;
     });

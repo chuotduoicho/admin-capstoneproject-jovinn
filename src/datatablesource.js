@@ -198,19 +198,19 @@ export const transactionColumns = [
     width: 160,
   },
   {
-    field: "fullName",
-    headerName: "Họ tên",
-    width: 250,
+    field: "description",
+    headerName: "Email",
+    width: 180,
   },
   {
-    field: "dateCreated",
+    field: "paymentAt",
     headerName: "Ngày tạo",
     width: 250,
   },
   {
     field: "amount",
     headerName: "Số tiền",
-    width: 160,
+    width: 150,
   },
   {
     field: "type",
@@ -220,7 +220,7 @@ export const transactionColumns = [
   {
     field: "message",
     headerName: "Ghi chú",
-    width: 250,
+    width: 330,
   },
 ];
 

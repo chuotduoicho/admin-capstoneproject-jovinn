@@ -1,5 +1,5 @@
 {
-  "name": "jovinn",
+  "name": "jovinn_admin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,11 +8,13 @@
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.4.4",
     "@mui/x-data-grid": "^5.5.1",
+    "@mui/x-date-pickers": "^5.0.0-beta.6",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "date-fns": "^2.29.2",
     "dotenv": "^16.0.1",
     "env-cmd": "^10.1.0",
     "firebase": "^9.8.1",
@@ -24,6 +26,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-toastify": "^9.0.8",
+    "react-year-month-picker": "^1.0.1",
     "recharts": "^2.1.9",
     "redux": "^4.2.0",
     "sass": "^1.49.9",

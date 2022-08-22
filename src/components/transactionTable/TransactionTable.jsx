@@ -8,126 +8,62 @@ import {
   fetchTransactions,
   fetchTransactionsExport,
   selectAllTransations,
+  selectAllTransationsExport,
 } from "../../redux/transactionSlice";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { transactionColumns } from "../../datatablesource";
 import { useNavigate } from "react-router-dom";
+import { LocalizationProvider, YearPicker } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 const TransactionTable = () => {
-  const transactions = useSelector(selectAllTransations);
+  // const transactions = useSelector(selectAllTransations);
+  const transactionsExport = useSelector(selectAllTransationsExport);
   const [data, setData] = useState([]);
+  const [value, setValue] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchTransactions());
+    // dispatch(fetchTransactions());
     dispatch(fetchTransactionsExport());
   }, []);
   useEffect(() => {
-    setData(transactions);
-  }, [transactions]);
+    setData(transactionsExport);
+  }, [transactionsExport]);
   const headers = [
-    { label: "Email/Phone", key: "firstName" },
-    { label: "Amount", key: "lastName" },
-    { label: "Currency code", key: "email" },
-    { label: "Reference ID (optional)", key: "age" },
-    { label: "Note to recipient", key: "age" },
-    { label: "Recipient wallet", key: "age" },
-  ];
-
-  const data2 = [
-    {
-      firstName: "Warren",
-      lastName: "Morrow",
-      email: "sokyt@mailinator.com",
-      age: "36",
-    },
-    {
-      firstName: "Gwendolyn",
-      lastName: "Galloway",
-      email: "weciz@mailinator.com",
-      age: "76",
-    },
-    {
-      firstName: "Astra",
-      lastName: "Wyatt",
-      email: "quvyn@mailinator.com",
-      age: "57",
-    },
-    {
-      firstName: "Jasmine",
-      lastName: "Wong",
-      email: "toxazoc@mailinator.com",
-      age: "42",
-    },
-    {
-      firstName: "Brooke",
-      lastName: "Mcconnell",
-      email: "vyry@mailinator.com",
-      age: "56",
-    },
-    {
-      firstName: "Christen",
-      lastName: "Haney",
-      email: "pagevolal@mailinator.com",
-      age: "23",
-    },
-    {
-      firstName: "Tate",
-      lastName: "Vega",
-      email: "dycubo@mailinator.com",
-      age: "87",
-    },
-    {
-      firstName: "Amber",
-      lastName: "Brady",
-      email: "vyconixy@mailinator.com",
-      age: "78",
-    },
-    {
-      firstName: "Philip",
-      lastName: "Whitfield",
-      email: "velyfi@mailinator.com",
-      age: "22",
-    },
-    {
-      firstName: "Kitra",
-      lastName: "Hammond",
-      email: "fiwiloqu@mailinator.com",
-      age: "35",
-    },
-    {
-      firstName: "Charity",
-      lastName: "Mathews",
-      email: "fubigonero@mailinator.com",
-      age: "63",
-    },
+    { label: "Email/Phone", key: "description" },
+    { label: "Amount", key: "amount" },
+    { label: "Currency code", key: "currency" },
+    { label: "Reference ID (optional)", key: "userId" },
+    { label: "Note to recipient", key: "message" },
+    { label: "Recipient wallet", key: "method" },
+    { label: "ocial Feed Privacy (optional)", key: "" },
+    { label: "Holler URL (deprecated)", key: "" },
+    { label: "Logo URL (optional)", key: "" },
   ];
 
   const csvReport = {
-    data: data2,
+    data: transactionsExport,
     headers: headers,
     filename: "Các giao dịch trong tháng.csv",
   };
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
         Các giao dịch
-        {/* <button
-          className="link"
-          onClick={() =>
-            navigate("http://localhost:8080/api/admin/export-withdraw-request")
-          }
-        >
-          Xuất file yêu cầu rút tiền
-        </button> */}
-        <a
-          href="http://localhost:8080/api/admin/export-withdraw-request"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link"
-        >
-          Xuất file yêu cầu rút tiền
-        </a>
-        <CSVLink {...csvReport}>Export to CSV</CSVLink>
+        {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <YearPicker
+            label="Basic example"
+            value="2002"
+            onChange={(newValue) => {
+              setValue(newValue);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider> */}
+        <CSVLink {...csvReport} className="link">
+          Xuất dữ liệu
+        </CSVLink>
       </div>
       <DataGrid
         className="datagrid"
