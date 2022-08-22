@@ -1,25 +1,42 @@
 import "./skillTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { categoryColumns, SKillColumns, skillRows } from "../../datatablesource";
+import {
+  categoryColumns,
+  SKillColumns,
+  skillRows,
+} from "../../datatablesource";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText } from "@mui/material";
-import { fetchSkills, selectSkills, selectSkillStatus } from "../../redux/categorySlice";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  DialogContentText,
+} from "@mui/material";
+import {
+  deleteSkill,
+  fetchSkills,
+  selectSkills,
+  selectSkillStatus,
+} from "../../redux/categorySlice";
 
 const SKillTable = ({ subCategoryId }) => {
   const listSkill = useSelector(selectSkills);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
-  
+  const [id, setId] = useState("");
   useEffect(() => {
     dispatch(fetchSkills(subCategoryId));
   }, []);
 
   useEffect(() => {
-      setData(listSkill);
-  },[listSkill]);
+    setData(listSkill);
+  }, [listSkill]);
 
   const [open, setOpen] = useState(false);
 
@@ -31,8 +48,16 @@ const SKillTable = ({ subCategoryId }) => {
     setOpen(false);
   };
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const handleDelete = () => {
+    dispatch(deleteSkill(id))
+      .unwrap()
+      .then(() => {
+        dispatch(fetchSkills(subCategoryId));
+        setOpen(false);
+      })
+      .catch(() => {
+        setOpen(false);
+      });
   };
 
   const actionColumn = [
@@ -43,15 +68,10 @@ const SKillTable = ({ subCategoryId }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <a href={"http://localhost:3000/subCategories/" + params.row.id}>
-              <div
-                className="viewButton"
-              >Xem</div>
-            </a>
             <Button
               className="deleteButton"
               onClick={() => {
-                //handleDelete(params.row.id);
+                setId(params.row.id);
                 handleClickOpen();
               }}
             >
@@ -63,7 +83,9 @@ const SKillTable = ({ subCategoryId }) => {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
-              <DialogTitle id="alert-dialog-title">{"Xác nhận xóa kỹ năng"}</DialogTitle>
+              <DialogTitle id="alert-dialog-title">
+                {"Xác nhận xóa kỹ năng"}
+              </DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                   Bạn có muốn xóa kỹ năng này?
@@ -73,7 +95,7 @@ const SKillTable = ({ subCategoryId }) => {
                 <Button onClick={handleClose} color="primary">
                   Hủy
                 </Button>
-                <Button onClick={handleClose} color="primary" autoFocus>
+                <Button onClick={handleDelete} color="primary" autoFocus>
                   Đồng ý
                 </Button>
               </DialogActions>
@@ -87,9 +109,13 @@ const SKillTable = ({ subCategoryId }) => {
     <div className="datatable">
       <div className="datatableTitle">
         Cách Kỹ năng
-        <Link to="new" className="link">
-          Thêm mới
-        </Link>
+        <Button
+          onClick={() => navigate("/addSkill/" + subCategoryId)}
+          variant="outlined"
+        >
+          {" "}
+          Tạo mới
+        </Button>
       </div>
       <DataGrid
         className="datagrid"

@@ -2,8 +2,8 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 
 import { userColumns } from "../../datatablesource";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   banOrUnbanUser,
@@ -18,8 +18,6 @@ const Datatable = () => {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchAllUsers());
-    console.log("list user", listUsers);
-    //setData(listUsers);
   }, []);
 
   const handleBan = (id) => {
@@ -28,7 +26,6 @@ const Datatable = () => {
       .then(() => {
         dispatch(fetchAllUsers());
       });
-    navigate("/users");
   };
 
   const actionColumn = [
@@ -41,7 +38,9 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <div className="viewButton">Xem</div>
+            <div className="viewButton" onClick={() => navigate(params.row.id)}>
+              Xem
+            </div>
             <Button
               className="deleteButton"
               onClick={() => handleBan(params.row.id)}
@@ -55,12 +54,7 @@ const Datatable = () => {
   ];
   return (
     <div className="datatable">
-      <div className="datatableTitle">
-        Danh sách người dùng
-        {/* <Link to="/users/new" className="link">
-          Add New
-        </Link> */}
-      </div>
+      <div className="datatableTitle">Danh sách người dùng</div>
       <DataGrid
         className="datagrid"
         rows={listUsers}

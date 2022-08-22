@@ -33,14 +33,14 @@
       .right {
         flex: 2;
 
-        form {
+        .form {
           display: flex;
           flex-wrap: wrap;
           gap: 30px;
           justify-content: space-around;
 
           .formInput {
-            width: 40%;
+            width: 50%;
 
             label {
               display: flex;
@@ -55,6 +55,7 @@
             input {
               width: 100%;
               padding: 5px;
+              margin-right: 20px;
               border: none;
               border-bottom: 1px solid gray;
             }
@@ -62,7 +63,7 @@
 
           button {
             width: 150px;
-            padding: 10px;
+            margin-left: 100px;
             border: none;
             background-color: teal;
             color: white;

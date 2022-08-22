@@ -3,8 +3,17 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchUserDetail, selectUserDetail } from "../../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 const Profile = () => {
+  const { userId } = useParams();
+  const userDetail = useSelector(selectUserDetail);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUserDetail(userId));
+  }, []);
   return (
     <div className="single">
       <Sidebar />
@@ -21,7 +30,9 @@ const Profile = () => {
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">Jane Doe</h1>
+                <h1 className="itemTitle">
+                  {userDetail.firstName + " " + userDetail.lastName}
+                </h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
                   <span className="itemValue">janedoe@gmail.com</span>

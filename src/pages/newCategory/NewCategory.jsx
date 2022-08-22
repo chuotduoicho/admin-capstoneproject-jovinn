@@ -15,18 +15,15 @@ const NewCategory = () => {
     name: catName,
   };
   const handleAdd = (e) => {
-    e.preventDefault();
-    dispatch(addCategory({ category }))
+    dispatch(addCategory(category))
       .unwrap()
       .then(() => {
         dispatch(fetchCategories());
         setSuccess("Tạo danh mục thành công!");
-        navigate("/categories")
+        navigate("/categories");
       })
-      .catch(() => {
-
-      });
-  }
+      .catch(() => {});
+  };
   return (
     <div className="new">
       <Sidebar />
@@ -36,19 +33,18 @@ const NewCategory = () => {
           <h1>Tạo danh mục mới</h1>
         </div>
         <div className="bottom">
-          <div className="left">
-          </div>
+          <div className="left"></div>
           <div className="right">
             <div className="form">
-              <div className="formInput" >
+              <div className="formInput">
                 <label>Tên danh mục</label>
-                <input  
-                  placeholder="Nhập tên danh mục" 
-                  onChange={(e) => setCatName(e.target.value)} 
+                <input
+                  placeholder="Nhập tên danh mục"
+                  onChange={(e) => setCatName(e.target.value)}
                   required
                 />
               </div>
-              <button onClick={handleAdd()}>Tạo mới</button>
+              <button onClick={handleAdd}>Tạo mới</button>
             </div>
           </div>
         </div>

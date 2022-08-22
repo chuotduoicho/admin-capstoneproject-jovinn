@@ -20,10 +20,6 @@ const CategoriesTable = () => {
     dispatch(fetchCategories());
   }, []);
 
-  // useEffect(() => {
-  //   setData(listCategories);
-  // }, [listCategories]);
-
   const actionColumn = [
     {
       field: "action",

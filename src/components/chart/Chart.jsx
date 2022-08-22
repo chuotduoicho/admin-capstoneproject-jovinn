@@ -11,12 +11,12 @@ import {
 const Chart = ({ aspect, title, chartData }) => {
   const date = new Date().getDate();
   const data = [
-    { name: "February", Total: chartData[5] },
-    { name: "March", Total: chartData[4] },
-    { name: "April", Total: chartData[3] },
-    { name: "May", Total: chartData[2] },
-    { name: "June", Total: chartData[1] },
-    { name: "July", Total: chartData[0] },
+    { name: "February", Total: 2 },
+    { name: "March", Total: 6 },
+    { name: "April", Total: 5 },
+    { name: "May", Total: 3 },
+    { name: "June", Total: 4 },
+    { name: "July", Total: 6 },
   ];
 
   return (
