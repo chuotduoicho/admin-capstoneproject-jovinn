@@ -36,7 +36,7 @@ const TransactionTable = () => {
     { label: "Reference ID (optional)", key: "userId" },
     { label: "Note to recipient", key: "message" },
     { label: "Recipient wallet", key: "method" },
-    { label: "ocial Feed Privacy (optional)", key: "" },
+    { label: "Social Feed Privacy (optional)", key: "" },
     { label: "Holler URL (deprecated)", key: "" },
     { label: "Logo URL (optional)", key: "" },
   ];
